@@ -1,0 +1,22 @@
+FROM python:latest
+
+WORKDIR /usr/src
+
+RUN pip install --upgrade pip
+RUN pip install cmake --upgrade
+
+RUN git clone https://github.com/google/draco
+RUN cd draco
+
+RUN mkdir build
+
+RUN cd build
+
+WORKDIR /usr/src/draco/build
+
+RUN cmake ../ 
+
+RUN make
+
+ ENTRYPOINT ["./draco_encoder"]
+ CMD ["./draco_encoder"]

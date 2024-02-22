@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/leon/docker-gltf-to-udsz/issues"
   },
-  "homepage": "https://github.com/leon/docker-gltf-to-udsz#readme"
+  "homepage": "https://github.com/leon/docker-gltf-to-udsz#readme",
+  "dependencies": {
+    "gltfpack": "^0.20.0"
+  }
 }
