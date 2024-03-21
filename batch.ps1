@@ -1,6 +1,6 @@
 
 $extension = "gltf"
-$files = Get-ChildItem "C:\Projects\HomeOutside ModelsConverterAndUploader\AR models\Destination" -Recurse -Include ('*.gltf', '*.glb')
+$files = Get-ChildItem "C:\Projects\HomeOutside ModelsConverterAndUploader\UnityModels\Converted\AhfR Anigozanthos Bush Ballad kangaroo paw" -Recurse -Include ('*.gltf', '*.glb')
 
 for ($i = 0; $i -lt $files.Count; $i++) {
    
@@ -25,13 +25,14 @@ for ($i = 0; $i -lt $files.Count; $i++) {
   if ($folderExists) {
   }
   else {
-    New-Item -Path  $newFolder -ItemType Directory
+   # New-Item -Path  $newFolder -ItemType Directory
   }
 
-
+ #AR uzdz converter
   docker run --rm -v "$($folderFullName):/usr/app"leon/usd-from-gltf:latest "$extension/$fileNameEx" "usdz/$fileName.usdz"
 
-  gltf-pipeline  -i "$($folderFullName)/$extension/$fileNameEx" -o "$($folderFullName)/$extension/$($fileName)_commpressed.glb" -d --draco.compressionLevel=7
+  # compress glb
+  gltf-pipeline  -i "$($folderFullName)/$extension/$fileNameEx" -o "$($folderFullName)/$extension/$($fileName)_commpressed.glb" -d --draco.compressionLevel=8
 
   Remove-Item "$($folderFullName)/$extension/$fileNameEx"
 
