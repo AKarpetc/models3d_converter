@@ -1,6 +1,6 @@
 
 $extension = "gltf"
-$files = Get-ChildItem "C:\Projects\HomeOutside ModelsConverterAndUploader\UnityModels\Converted\AhfR Anigozanthos Bush Ballad kangaroo paw" -Recurse -Include ('*.gltf', '*.glb')
+$files = Get-ChildItem "C:\Projects\HomeOutside ModelsConverterAndUploader\ModelsVersion\models05062024" -Recurse -Include ('*.gltf', '*.glb')
 
 for ($i = 0; $i -lt $files.Count; $i++) {
    
@@ -32,9 +32,9 @@ for ($i = 0; $i -lt $files.Count; $i++) {
   docker run --rm -v "$($folderFullName):/usr/app"leon/usd-from-gltf:latest "$extension/$fileNameEx" "usdz/$fileName.usdz"
 
   # compress glb
-  gltf-pipeline  -i "$($folderFullName)/$extension/$fileNameEx" -o "$($folderFullName)/$extension/$($fileName)_commpressed.glb" -d --draco.compressionLevel=8
+  # gltf-pipeline  -i "$($folderFullName)/$extension/$fileNameEx" -o "$($folderFullName)/$extension/$($fileName)_commpressed.glb" -d --draco.compressionLevel=8
 
-  Remove-Item "$($folderFullName)/$extension/$fileNameEx"
+  # Remove-Item "$($folderFullName)/$extension/$fileNameEx"
 
-  Rename-Item -Path "$($folderFullName)/$extension/$($fileName)_commpressed.glb"  -NewName $fileNameEx
+  # Rename-Item -Path "$($folderFullName)/$extension/$($fileName)_commpressed.glb"  -NewName $fileNameEx
 }

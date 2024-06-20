@@ -2,7 +2,7 @@
 
 
 $extension="fbx"
-$files = Get-ChildItem "C:\Projects\HomeOutside ModelsConverterAndUploader\UnityModels\Unpacked\ABF Agastache Blue Fortune Hyssop" -Recurse -Include ('*.fbx')
+$files = Get-ChildItem "C:\Projects\HomeOutside ModelsConverterAndUploader\ModelsUnity_new\converted manualy\auto" -Recurse -Include ('*.fbx')
 
 for ($i=0; $i -lt $files.Count; $i++) {
    

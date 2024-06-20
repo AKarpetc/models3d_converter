@@ -1,6 +1,6 @@
 # Since USD takes so long to build, we separate it into it's own container
-FROM usd_23-02
-
+FROM usd_21-02
+# add get http https://medium.com/oracledevs/create-a-simple-docker-container-with-a-python-web-server-26534205061a
 WORKDIR /usr/src/ufg
 
 #cmake
