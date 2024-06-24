@@ -25,6 +25,9 @@
   },
   "homepage": "https://github.com/leon/docker-gltf-to-udsz#readme",
   "dependencies": {
+    "@gltf-transform/core": "^4.0.1",
+    "@gltf-transform/extensions": "^4.0.1",
+    "@gltf-transform/functions": "^4.0.1",
     "gltfpack": "^0.20.0"
   }
 }

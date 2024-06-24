@@ -40,5 +40,5 @@ RUN rm -rf "${UFG_SRC}" "${UFG_INSTALL}/build" "${UFG_INSTALL}/src"
  WORKDIR /usr/app
 
 # Start the service
- ENTRYPOINT ["usd_from_gltf"]
- CMD ["usd_from_gltf"]
+ #ENTRYPOINT ["usd_from_gltf"]
+ #CMD ["usd_from_gltf"]
