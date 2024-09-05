@@ -1,9 +1,8 @@
 
 $extension = "gltf"
-$files = Get-ChildItem "C:\Projects\HomeOutside ModelsConverterAndUploader\ModelsVersion\models05062024" -Recurse -Include ('*.gltf', '*.glb')
+$files = Get-ChildItem "C:\My\Projects\Models\CenteredModels" -Recurse -Include ('*.gltf', '*.glb')
 
 for ($i = 0; $i -lt $files.Count; $i++) {
-   
   $folderFullName = (get-item $files[$i] ).Directory.Parent.FullName.replace('\', '/')  
   $folderName = (get-item $files[$i] ).Directory.Parent
 
@@ -25,16 +24,15 @@ for ($i = 0; $i -lt $files.Count; $i++) {
   if ($folderExists) {
   }
   else {
-   # New-Item -Path  $newFolder -ItemType Directory
+    # New-Item -Path  $newFolder -ItemType Directory
   }
 
- #AR uzdz converter
+  #AR uzdz converter
   docker run --rm -v "$($folderFullName):/usr/app"leon/usd-from-gltf:latest "$extension/$fileNameEx" "usdz/$fileName.usdz"
 
-  # compress glb
-  # gltf-pipeline  -i "$($folderFullName)/$extension/$fileNameEx" -o "$($folderFullName)/$extension/$($fileName)_commpressed.glb" -d --draco.compressionLevel=8
+  gltf-transform optimize "$($folderFullName)/$extension/$fileNameEx" "$($folderFullName)/$extension/$($fileName)_commpressed2.glb"  --texture-compress webp
 
-  # Remove-Item "$($folderFullName)/$extension/$fileNameEx"
 
-  # Rename-Item -Path "$($folderFullName)/$extension/$($fileName)_commpressed.glb"  -NewName $fileNameEx
+  Rename-Item -Path "$($folderFullName)/$extension/$fileNameEx"  -NewName "$($fileNameEx)_not_Compressed"
+  Rename-Item -Path "$($folderFullName)/$extension/$($fileName)_commpressed2.glb"  -NewName $fileNameEx
 }
