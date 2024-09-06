@@ -33,6 +33,6 @@ for ($i = 0; $i -lt $files.Count; $i++) {
   gltf-transform optimize "$($folderFullName)/$extension/$fileNameEx" "$($folderFullName)/$extension/$($fileName)_commpressed2.glb"  --texture-compress webp
 
 
-  Rename-Item -Path "$($folderFullName)/$extension/$fileNameEx"  -NewName "$($fileNameEx)_not_Compressed"
+  Rename-Item -Path "$($folderFullName)/$extension/$fileNameEx"  -NewName "$($fileName)_not_Compressed.glb"
   Rename-Item -Path "$($folderFullName)/$extension/$($fileName)_commpressed2.glb"  -NewName $fileNameEx
 }
